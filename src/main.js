@@ -5,7 +5,7 @@ const dashboardData = {
     { label: 'Assignments due', value: '124', change: '-9.2%', tone: 'warning' },
     { label: 'Revenue this month', value: '$84.2K', change: '+21.7%', tone: 'success' }
   ],
-  courses: [
+  course: [
     { title: 'Product Design Foundations', category: 'UX / Design', lessons: 12, duration: '4 weeks', progress: 82, color: 'violet', mentor: 'Maya Chen' },
     { title: 'Data Analytics Bootcamp', category: 'Business Intelligence', lessons: 18, duration: '6 weeks', progress: 68, color: 'cyan', mentor: 'Ryan Silva' },
     { title: 'Frontend Development Pro', category: 'Engineering', lessons: 15, duration: '5 weeks', progress: 91, color: 'amber', mentor: 'Asha Patel' },
