@@ -132,6 +132,8 @@ function renderStats() {
 }
 
 function renderCourses() {
+  const courses = Array.isArray(dashboardData.course) ? dashboardData.course : [];
+
   return `
     <section class="panel">
       <div class="panel-header">
@@ -142,7 +144,7 @@ function renderCourses() {
         <button class="text-btn" type="button">View all</button>
       </div>
       <div class="course-grid">
-        ${dashboardData.courses
+        ${courses
           .map(
             (course) => `
               <article class="course-card ${course.color}">
