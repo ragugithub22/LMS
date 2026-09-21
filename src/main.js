@@ -37,8 +37,8 @@ const dashboardData = {
 
 const navItems = [
   { label: 'Dashboard', icon: '⌂', active: true },
-  { label: 'Courses', icon: '◫' },
-  { label: 'Learners', icon: '◎' },
+  { label: 'Course', icon: '◫' },
+  { label: 'Learner', icon: '◎' },
   { label: 'Assignments', icon: '✓' },
   { label: 'Messages', icon: '✉' },
   { label: 'Analytics', icon: '◔' },
