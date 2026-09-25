@@ -1,4 +1,4 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))r(s);new MutationObserver(s=>{for(const n of s)if(n.type==="childList")for(const i of n.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&r(i)}).observe(document,{childList:!0,subtree:!0});function o(s){const n={};return s.integrity&&(n.integrity=s.integrity),s.referrerPolicy&&(n.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?n.credentials="include":s.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function r(s){if(s.ep)return;s.ep=!0;const n=o(s);fetch(s.href,n)}})();const a={stats:[{label:"Active learners",value:"8,420",change:"+12.4%",tone:"success"},{label:"Course completion",value:"76%",change:"+8.1%",tone:"info"},{label:"Assignments due",value:"124",change:"-9.2%",tone:"warning"},{label:"Revenue this month",value:"$84.2K",change:"+21.7%",tone:"success"}],course:[{title:"Product Design Foundations",category:"UX / Design",lessons:12,duration:"4 weeks",progress:82,color:"violet",mentor:"Maya Chen"},{title:"Data Analytics Bootcamp",category:"Business Intelligence",lessons:18,duration:"6 weeks",progress:68,color:"cyan",mentor:"Ryan Silva"},{title:"Frontend Development Pro",category:"Engineering",lessons:15,duration:"5 weeks",progress:91,color:"amber",mentor:"Asha Patel"},{title:"Career Readiness Lab",category:"Professional Growth",lessons:9,duration:"3 weeks",progress:57,color:"rose",mentor:"Joel Nguyen"}],cohorts:[{name:"Bootcamp Cohort A",learners:214,completion:"81%",trend:"+5%"},{name:"Career Track 2026",learners:148,completion:"74%",trend:"+3%"},{name:"Executive Upskilling",learners:67,completion:"89%",trend:"+7%"}],assignments:[{name:"UI critique deck",course:"Product Design Foundations",due:"Today, 5:00 PM",status:"Pending review"},{name:"SQL challenge set",course:"Data Analytics Bootcamp",due:"Tomorrow, 9:30 AM",status:"In progress"},{name:"Capstone milestone",course:"Frontend Development Pro",due:"Thu, 2:00 PM",status:"Needs submission"},{name:"Interview prep worksheet",course:"Career Readiness Lab",due:"Fri, 10:00 AM",status:"Ready to grade"}],schedule:[{time:"09:00",title:"Live workshop: Storytelling in UX",type:"Workshop"},{time:"11:30",title:"Data labs office hours",type:"Mentoring"},{time:"14:00",title:"Career coaching circle",type:"Session"},{time:"16:15",title:"Team sprint review",type:"Review"}],notifications:["12 new learners joined the product design track.","3 assignments are overdue in the analytics cohort.","Your Q3 enrollment report is ready to review."]},l=[{label:"Dashboard",icon:"⌂",active:!0},{label:"Course",icon:"◫"},{label:"Learner",icon:"◎"},{label:"Assignments",icon:"✓"},{label:"Messages",icon:"✉"},{label:"Analytics",icon:"◔"},{label:"Settings",icon:"⚙"}],c=document.querySelector("#app");function d(e){return{success:"success",info:"info",warning:"warning"}[e]||"neutral"}function p(){return`
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))r(s);new MutationObserver(s=>{for(const a of s)if(a.type==="childList")for(const i of a.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&r(i)}).observe(document,{childList:!0,subtree:!0});function c(s){const a={};return s.integrity&&(a.integrity=s.integrity),s.referrerPolicy&&(a.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?a.credentials="include":s.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function r(s){if(s.ep)return;s.ep=!0;const a=c(s);fetch(s.href,a)}})();const o={stats:[{label:"Active learners",value:"8,420",change:"+12.4%",tone:"success"},{label:"Course completion",value:"76%",change:"+8.1%",tone:"info"},{label:"Assignments due",value:"124",change:"-9.2%",tone:"warning"},{label:"Revenue this month",value:"$84.2K",change:"+21.7%",tone:"success"}],course:[{title:"Product Design Foundations",category:"UX / Design",lessons:12,duration:"4 weeks",progress:82,color:"violet",mentor:"Maya Chen"},{title:"Data Analytics Bootcamp",category:"Business Intelligence",lessons:18,duration:"6 weeks",progress:68,color:"cyan",mentor:"Ryan Silva"},{title:"Frontend Development Pro",category:"Engineering",lessons:15,duration:"5 weeks",progress:91,color:"amber",mentor:"Asha Patel"},{title:"Career Readiness Lab",category:"Professional Growth",lessons:9,duration:"3 weeks",progress:57,color:"rose",mentor:"Joel Nguyen"}],cohorts:[{name:"Bootcamp Cohort A",learners:214,completion:"81%",trend:"+5%"},{name:"Career Track 2026",learners:148,completion:"74%",trend:"+3%"},{name:"Executive Upskilling",learners:67,completion:"89%",trend:"+7%"}],assignments:[{name:"UI critique deck",course:"Product Design Foundations",due:"Today, 5:00 PM",status:"Pending review"},{name:"SQL challenge set",course:"Data Analytics Bootcamp",due:"Tomorrow, 9:30 AM",status:"In progress"},{name:"Capstone milestone",course:"Frontend Development Pro",due:"Thu, 2:00 PM",status:"Needs submission"},{name:"Interview prep worksheet",course:"Career Readiness Lab",due:"Fri, 10:00 AM",status:"Ready to grade"}],schedule:[{time:"09:00",title:"Live workshop: Storytelling in UX",type:"Workshop"},{time:"11:30",title:"Data labs office hours",type:"Mentoring"},{time:"14:00",title:"Career coaching circle",type:"Session"},{time:"16:15",title:"Team sprint review",type:"Review"}],notifications:["12 new learners joined the product design track.","3 assignments are overdue in the analytics cohort.","Your Q3 enrollment report is ready to review."]},d=document.querySelector("#app");let n=o;const p=[{label:"Dashboard",icon:"⌂",active:!0},{label:"Course",icon:"◫"},{label:"Learner",icon:"◎"},{label:"Assignments",icon:"✓"},{label:"Messages",icon:"✉"},{label:"Analytics",icon:"◔"},{label:"Settings",icon:"⚙"}];async function u(){try{const e=await fetch("/api/dashboard");if(!e.ok)throw new Error(`Request failed with status ${e.status}`);return await e.json()}catch(e){return console.warn("Falling back to bundled LMS dashboard data:",e),o}}l();u().then(e=>{n=e,l()});function v(e){return{success:"success",info:"info",warning:"warning"}[e]||"neutral"}function h(){return`
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">S</div>
@@ -9,7 +9,7 @@
       </div>
 
       <nav class="sidebar-nav">
-        ${l.map(e=>`
+        ${p.map(e=>`
               <button class="nav-item ${e.active?"active":""}" type="button">
                 <span class="nav-icon">${e.icon}</span>
                 <span>${e.label}</span>
@@ -26,7 +26,7 @@
         <p class="small-text">Up 14% from last week</p>
       </div>
     </aside>
-  `}function u(){return`
+  `}function m(){return`
     <header class="topbar">
       <div>
         <p class="eyebrow">Overview</p>
@@ -42,19 +42,19 @@
         <button class="primary-btn" type="button">New cohort</button>
       </div>
     </header>
-  `}function v(){return`
+  `}function b(){return`
     <section class="stats-grid">
-      ${a.stats.map(e=>`
+      ${n.stats.map(e=>`
             <article class="stat-card">
               <div class="stat-top">
                 <span class="stat-label">${e.label}</span>
-                <span class="pill ${d(e.tone)}">${e.change}</span>
+                <span class="pill ${v(e.tone)}">${e.change}</span>
               </div>
               <h3>${e.value}</h3>
             </article>
           `).join("")}
     </section>
-  `}function m(){return`
+  `}function g(){return`
     <section class="panel">
       <div class="panel-header">
         <div>
@@ -64,7 +64,7 @@
         <button class="text-btn" type="button">View all</button>
       </div>
       <div class="course-grid">
-        ${(Array.isArray(a.course)?a.course:[]).map(t=>`
+        ${(Array.isArray(n.course)?n.course:[]).map(t=>`
               <article class="course-card ${t.color}">
                 <div class="course-badge">${t.category}</div>
                 <h4>${t.title}</h4>
@@ -86,7 +86,7 @@
             `).join("")}
       </div>
     </section>
-  `}function h(){return`
+  `}function y(){return`
     <section class="panel">
       <div class="panel-header split">
         <div>
@@ -96,7 +96,7 @@
         <button class="text-btn" type="button">See details</button>
       </div>
       <div class="cohort-list">
-        ${a.cohorts.map(e=>`
+        ${n.cohorts.map(e=>`
               <div class="cohort-item">
                 <div>
                   <h4>${e.name}</h4>
@@ -110,7 +110,7 @@
             `).join("")}
       </div>
     </section>
-  `}function b(){return`
+  `}function f(){return`
     <section class="panel">
       <div class="panel-header">
         <div>
@@ -120,7 +120,7 @@
         <button class="text-btn" type="button">Review queue</button>
       </div>
       <div class="assignment-list">
-        ${a.assignments.map(e=>`
+        ${n.assignments.map(e=>`
               <div class="assignment-item">
                 <div>
                   <h4>${e.name}</h4>
@@ -134,7 +134,7 @@
             `).join("")}
       </div>
     </section>
-  `}function g(){return`
+  `}function $(){return`
     <section class="panel schedule-panel">
       <div class="panel-header">
         <div>
@@ -145,7 +145,7 @@
       </div>
 
       <div class="schedule-list">
-        ${a.schedule.map(e=>`
+        ${n.schedule.map(e=>`
               <div class="schedule-item">
                 <time>${e.time}</time>
                 <div class="schedule-copy">
@@ -156,7 +156,7 @@
             `).join("")}
       </div>
     </section>
-  `}function y(){return`
+  `}function w(){return`
     <aside class="panel side-panel">
       <div class="panel-header">
         <div>
@@ -165,7 +165,7 @@
         </div>
       </div>
       <div class="activity-list">
-        ${a.notifications.map(e=>`
+        ${n.notifications.map(e=>`
               <div class="activity-item">
                 <span class="dot"></span>
                 <p>${e}</p>
@@ -173,25 +173,25 @@
             `).join("")}
       </div>
     </aside>
-  `}c.innerHTML=`
-  <div class="app-shell">
-    ${p()}
-    <main class="main-panel">
-      ${u()}
-      ${v()}
-      <div class="content-grid">
-        <div class="main-column">
-          ${m()}
-        </div>
-        <div class="secondary-column">
-          ${h()}
-          ${y()}
-        </div>
-      </div>
-      <div class="bottom-grid">
+  `}function l(){d.innerHTML=`
+    <div class="app-shell">
+      ${h()}
+      <main class="main-panel">
+        ${m()}
         ${b()}
-        ${g()}
-      </div>
-    </main>
-  </div>
-`;
+        <div class="content-grid">
+          <div class="main-column">
+            ${g()}
+          </div>
+          <div class="secondary-column">
+            ${y()}
+            ${w()}
+          </div>
+        </div>
+        <div class="bottom-grid">
+          ${f()}
+          ${$()}
+        </div>
+      </main>
+    </div>
+  `}

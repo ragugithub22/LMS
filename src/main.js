@@ -1,4 +1,4 @@
-const dashboardData = {
+const fallbackDashboardData = {
   stats: [
     { label: 'Active learners', value: '8,420', change: '+12.4%', tone: 'success' },
     { label: 'Course completion', value: '76%', change: '+8.1%', tone: 'info' },
@@ -35,6 +35,9 @@ const dashboardData = {
   ]
 };
 
+const app = document.querySelector('#app');
+let dashboardData = fallbackDashboardData;
+
 const navItems = [
   { label: 'Dashboard', icon: '⌂', active: true },
   { label: 'Course', icon: '◫' },
@@ -45,7 +48,27 @@ const navItems = [
   { label: 'Settings', icon: '⚙' }
 ];
 
-const app = document.querySelector('#app');
+async function loadDashboardData() {
+  try {
+    const response = await fetch('/api/dashboard');
+
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.warn('Falling back to bundled LMS dashboard data:', error);
+    return fallbackDashboardData;
+  }
+}
+
+renderApp();
+
+loadDashboardData().then((data) => {
+  dashboardData = data;
+  renderApp();
+});
 
 function toneClass(tone) {
   return {
@@ -292,25 +315,27 @@ function renderNotifications() {
   `;
 }
 
-app.innerHTML = `
-  <div class="app-shell">
-    ${renderSidebar()}
-    <main class="main-panel">
-      ${renderTopbar()}
-      ${renderStats()}
-      <div class="content-grid">
-        <div class="main-column">
-          ${renderCourses()}
+function renderApp() {
+  app.innerHTML = `
+    <div class="app-shell">
+      ${renderSidebar()}
+      <main class="main-panel">
+        ${renderTopbar()}
+        ${renderStats()}
+        <div class="content-grid">
+          <div class="main-column">
+            ${renderCourses()}
+          </div>
+          <div class="secondary-column">
+            ${renderPerformance()}
+            ${renderNotifications()}
+          </div>
         </div>
-        <div class="secondary-column">
-          ${renderPerformance()}
-          ${renderNotifications()}
+        <div class="bottom-grid">
+          ${renderAssignments()}
+          ${renderSchedule()}
         </div>
-      </div>
-      <div class="bottom-grid">
-        ${renderAssignments()}
-        ${renderSchedule()}
-      </div>
-    </main>
-  </div>
-`;
+      </main>
+    </div>
+  `;
+}
